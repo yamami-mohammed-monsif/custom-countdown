@@ -28,7 +28,7 @@ input {
   outline: none;
 }
 
-button {
+.submit-btn {
   background-color: #006959;
   color: white;
   border: none;
