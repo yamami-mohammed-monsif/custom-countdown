@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: min(calc(100% - 20px), 700px);
+  height: 350px;
+  margin-inline: auto;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
