@@ -2,7 +2,7 @@ import "./input-container.css";
 
 function InputContainer() {
   return (
-    <div className="input-container" hidden>
+    <div className="input-container">
       <h1>Create a custom countdown</h1>
       <form action="">
         <label>Title</label>

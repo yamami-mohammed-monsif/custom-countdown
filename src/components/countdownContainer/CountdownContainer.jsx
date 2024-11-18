@@ -2,7 +2,7 @@ import "./countdown-container.css";
 
 function CountdownContainer() {
   return (
-    <div className="countdown-container">
+    <div className="countdown-container" hidden>
       <h1>countdown title here</h1>
       <ul>
         <li>
