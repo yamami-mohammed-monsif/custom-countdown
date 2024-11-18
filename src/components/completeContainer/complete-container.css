@@ -1,3 +1,9 @@
+.complete-container {
+  width: 80%;
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
 .complete-title {
   animation: complete 4s infinite;
 }
