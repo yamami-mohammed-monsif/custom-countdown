@@ -25,7 +25,11 @@ function App() {
           />
         )}
         {currentView == "countdown" && (
-          <CountdownContainer title={titleInput} date={dateInput} />
+          <CountdownContainer
+            title={titleInput}
+            date={dateInput}
+            setView={setCurrentView}
+          />
         )}
         {currentView == "complete" && <CompleteContainer />}
       </div>

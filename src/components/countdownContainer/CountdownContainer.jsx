@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 
 import "./countdown-container.css";
 
-function CountdownContainer({ title, date }) {
+function CountdownContainer({ title, date, setView }) {
   const countdownValue = new Date(date).getTime();
   const now = new Date().getTime();
-  // const difference = countdownValue - now;
   const [difference, setDifference] = useState(countdownValue - now);
 
   useEffect(() => {
@@ -13,6 +12,10 @@ function CountdownContainer({ title, date }) {
       setDifference(difference - 1000);
     }, 1000);
   }, [difference]);
+
+  function handleClick() {
+    setView("input");
+  }
 
   return (
     <div className="countdown-container">
@@ -35,7 +38,9 @@ function CountdownContainer({ title, date }) {
           Seconds
         </li>
       </ul>
-      <button className="reset-btn">Reset</button>
+      <button className="reset-btn" onClick={handleClick}>
+        Reset
+      </button>
     </div>
   );
 }
