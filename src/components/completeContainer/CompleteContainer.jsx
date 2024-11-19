@@ -2,7 +2,7 @@ import "./complete-container.css";
 
 function CompleteContainer() {
   return (
-    <div className="complete-container" hidden>
+    <div className="complete-container">
       <h1 className="complete-title">countdown complete</h1>
       <h1>
         countdown finished on

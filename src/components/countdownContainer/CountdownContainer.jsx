@@ -1,24 +1,37 @@
+import { useEffect, useState } from "react";
+
 import "./countdown-container.css";
 
-function CountdownContainer() {
+function CountdownContainer({ title, date }) {
+  const countdownValue = new Date(date).getTime();
+  const now = new Date().getTime();
+  // const difference = countdownValue - now;
+  const [difference, setDifference] = useState(countdownValue - now);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDifference(difference - 1000);
+    }, 1000);
+  }, [difference]);
+
   return (
-    <div className="countdown-container" hidden>
-      <h1>countdown title here</h1>
+    <div className="countdown-container">
+      <h1>{title}</h1>
       <ul>
         <li>
-          <span>2</span>
+          <span>{Math.floor(difference / (1000 * 60 * 60 * 24))}</span>
           Days
         </li>
         <li>
-          <span>9</span>
+          <span>{Math.floor(difference / (1000 * 60 * 60)) % 24}</span>
           Hours
         </li>
         <li>
-          <span>34</span>
+          <span>{Math.floor(difference / (1000 * 60)) % 60}</span>
           Minutes
         </li>
         <li>
-          <span>55</span>
+          <span>{Math.floor(difference / 1000) % 60}</span>
           Seconds
         </li>
       </ul>
