@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -13,25 +13,45 @@ function App() {
 
   const [currentView, setCurrentView] = useState("input");
 
+  // when the app first loaded, retreive the stored countdown if there is one
+  useEffect(() => {
+    try {
+      const storedCountdown = localStorage.getItem("countdown");
+      if (storedCountdown) {
+        const { title, date } = JSON.parse(storedCountdown);
+        setTitleInput(title);
+        setDateInput(date);
+        setCurrentView("countdown");
+      }
+    } catch (error) {
+      console.error("Failed to load countdown from local storage", error);
+    }
+  }, []);
+
   return (
     <div>
       <VideoBg />
       <div className="container">
-        {currentView == "input" && (
+        {currentView === "input" && (
           <InputContainer
             setTitle={setTitleInput}
             setDate={setDateInput}
             setView={setCurrentView}
           />
         )}
-        {currentView == "countdown" && (
+        {currentView === "countdown" && (
           <CountdownContainer
             title={titleInput}
             date={dateInput}
             setView={setCurrentView}
           />
         )}
-        {currentView == "complete" && <CompleteContainer />}
+        {currentView === "complete" && (
+          <CompleteContainer
+            completeDate={dateInput}
+            setView={setCurrentView}
+          />
+        )}
       </div>
     </div>
   );

@@ -8,14 +8,27 @@ function CountdownContainer({ title, date, setView }) {
   const [difference, setDifference] = useState(countdownValue - now);
 
   useEffect(() => {
-    setTimeout(() => {
-      setDifference(difference - 1000);
+    const myInterval = setInterval(() => {
+      setDifference((prevDeffirence) => prevDeffirence - 1000);
     }, 1000);
-  }, [difference]);
 
-  function handleClick() {
+    // clean up the inetervall when the coundown ends or when the component unmounts
+    return () => clearInterval(myInterval);
+  }, []);
+
+  // hide the countdown and show the input
+  function handleReset() {
     setView("input");
+    // remove the saved countdown from local storage
+    localStorage.removeItem("countdown");
   }
+
+  // update view when countdown reaches 0
+  useEffect(() => {
+    if (difference < 0) {
+      setView("complete");
+    }
+  }, [difference]);
 
   return (
     <div className="countdown-container">
@@ -38,7 +51,7 @@ function CountdownContainer({ title, date, setView }) {
           Seconds
         </li>
       </ul>
-      <button className="reset-btn" onClick={handleClick}>
+      <button className="reset-btn" onClick={handleReset}>
         Reset
       </button>
     </div>

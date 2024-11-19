@@ -1,14 +1,24 @@
 import "./complete-container.css";
 
-function CompleteContainer() {
+function CompleteContainer({ completeDate, setView }) {
+  const formattedDate = new Date(completeDate).toLocaleString();
+
+  // hide complete and show input
+  function handleClick() {
+    setView("input");
+    localStorage.removeItem("countdown");
+  }
+
   return (
     <div className="complete-container">
       <h1 className="complete-title">countdown complete</h1>
       <h1>
         countdown finished on
-        <br /> 05-05-2020
+        <br /> {formattedDate}
       </h1>
-      <button className="new-countdown">New countdown</button>
+      <button className="new-countdown" onClick={handleClick}>
+        New countdown
+      </button>
     </div>
   );
 }
