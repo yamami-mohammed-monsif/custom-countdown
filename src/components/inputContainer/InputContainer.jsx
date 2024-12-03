@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./input-container.css";
 
 function InputContainer({ setTitle, setDate, setView }) {

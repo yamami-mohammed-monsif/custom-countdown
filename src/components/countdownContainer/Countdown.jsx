@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Countdown({ countdownValue, now, setView }) {
   const [difference, setDifference] = useState(countdownValue - now);

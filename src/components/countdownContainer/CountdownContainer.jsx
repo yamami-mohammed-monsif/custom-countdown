@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-
-import "./countdown-container.css";
 import Countdown from "./Countdown";
+import "./countdown-container.css";
 
 function CountdownContainer({ title, date, setView }) {
   const countdownValue = new Date(date).getTime();
