@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./input-container.css";
 
 function InputContainer({ setTitle, setDate, setView }) {
   const today = new Date().toISOString().split("T")[0];
 
-  const [title, setLoacalTitle] = useState("");
+  const [title, setLocalTitle] = useState("");
   const [date, setLocalDate] = useState("");
 
   // get the value of the title
   function handleTitleChange(e) {
-    setLoacalTitle(() => e.target.value);
+    setLocalTitle(() => e.target.value);
   }
 
   // get the value of the date
@@ -39,7 +39,7 @@ function InputContainer({ setTitle, setDate, setView }) {
   return (
     <div className="input-container">
       <h1>Create a custom countdown</h1>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Title</label>
         <input
           type="text"
