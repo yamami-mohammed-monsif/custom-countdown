@@ -39,7 +39,7 @@ function InputContainer({ setTitle, setDate, setView }) {
   return (
     <div className="input-container">
       <h1>Create a custom countdown</h1>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Title</label>
         <input
           type="text"
